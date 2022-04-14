@@ -1,18 +1,25 @@
 import { apiAuth } from "../../api";
 
-export const handleLogin = async () => {
+export const handleLogin = async(dispatch: any) => {
   const tokenGr =
-    "Bearer AQUDXRxP7qrg-6fgAL8km7CCSgdhz9gO1T1ZQWsHeMUmDdb618bsCbUjxwEhABFHcOnU0xGAcOMwhepWn8LeX6Qj51ebnBZkZWNxAvRFdY8_-6HZrPLtdpikBqWPgINoSTLJwf1wL4-mb71AyNSWHzWdJijT66xf_28Nd2zec4_gOYXXL6yu7LICoymUhlQIL0u8XeFYVwTyFd_P8hqnmwQAhYgZ2DMqKQg3RhXJ6M7w5-9e8cdJUqQkHe35Igbxp4f0g1ViyVjxMgyiMM7pyZ9Tmol9GQFL2UrrlCCcP7_lezq3VGaJDK1NDiBQsBI_RNjAG0LhEJFf5R5WLb87ZBVe_bXrMg";
+    "Bearer AQUM9jAA3BKxdWF5mijTB375mlAPx0LIq7j4cpuUOhL9Cp1ovA8pGibbE7XlY_NJSp0NPB0hFW-cUm3DX73bUNWKI0BUcCKpnb1u43LI6rwNaddzW4XkfICHVxOM9p2VfcBNGOjgq4xXyTt7jkpUR4odTSJadhDa_FsbfJumM6Irqk8GWY9Y6HNRJY9NewD7ziIrHD8VpdvjpBuT5n42vRpHtRB_RArTzvz6vgQLmpTSPtBzE1U7g4tOt6MGCjgNUM9Svuf0R32AK25ZekppzMDIbIgOw7TivYhmw6MOYRBrpatn8QKNk9hSwux39wU6KNFFDaaZWSexTxzsK4ovMCixpx_8ug";
   try {
     const { data } = await apiAuth.get(`/${tokenGr}`);
 
     const authorization = {
       type: "SET_AUTH",
-      token: data,
+      token: 'dasdas',
       auth: true,
     };
-    apiAuth.defaults.headers.common["Authorization"] = data;
+
+    apiAuth.defaults.headers.common["Authorization"] = tokenGr;
+
     localStorage.setItem("token", data);
+    dispatch(authorization);
+    
+    // console.log(data);
+    console.log(authorization);
+    
   } catch (error) {
     console.log(error);
   }

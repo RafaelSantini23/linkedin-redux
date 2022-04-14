@@ -1,6 +1,7 @@
-function Profile() {
-  return (
-    <div>Profile</div>
-  )
-}
-export default Profile
+const Profile = () => {
+  return <div>
+      <h1>dadsadasdsa</h1>
+  </div>;
+};
+
+export default Profile;
